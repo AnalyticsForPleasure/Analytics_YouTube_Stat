@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
 
     histogram_by_country = df['Country'].value_counts()
-    top_10_Country = histogram_by_country.head(n=10)
+    top_10_Country = histogram_by_country.head(n=35)
     print('*')
 
     # res = df.loc[:, ['Youtuber', 'uploads', 'Country']]
@@ -26,14 +26,22 @@ if __name__ == '__main__':
     # group_by_country = df
 
 
+    # Number of youtube categories : We are talking about 18 categories
+    # 'Music', 'Film & Animation', 'Entertainment', 'Education', 'Shows', 'People & Blogs', 'Gaming', 'Sports',
+    # 'Howto & Style', 'News & Politics', 'Comedy', 'Trailers', 'Nonprofits & Activism', 'Science & Technology',
+    # 'Movies', 'Pets & Animals', 'Autos & Vehicles', 'Travel & Events']
+    list_of_unique_categories = list(pd.unique(df['category']))
+    print('*')
     output_res = df.loc[:, ['Youtuber', 'subscribers', 'category']]
 
     grouping_by_category = output_res.groupby('category')
     for category_name , mini_df_by_category in grouping_by_category:
         print(category_name)
         print(mini_df_by_category)
-        print(f'Number of channels from the same category: {mini_df_by_category.shape[0]} ')
+        print(f'Number of channels from the same category: {mini_df_by_category.shape[0]}')
         print('*')
+
+
 
 
 
